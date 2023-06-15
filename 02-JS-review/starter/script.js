@@ -143,6 +143,7 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
+/*
 // Destructuring
 const book = getBook(2);
 const title = book.title;
@@ -218,3 +219,12 @@ const getTotalReviewCount = function (book) {
 }
 
 console.log(getTotalReviewCount(getBook(3)));
+*/
+
+// Map Method
+const books = getBooks();
+const titles = books.map(book => book.title);
+console.log(titles);
+
+const essentialData = books.map(book => ({ title: book.title, author: book.author }));
+console.log(essentialData);
