@@ -228,3 +228,12 @@ console.log(titles);
 
 const essentialData = books.map(book => ({ title: book.title, author: book.author }));
 console.log(essentialData);
+
+// Filter Method
+const bigBooks = books.filter(book => book.pages > 500).filter(book => book.hasMovieAdaptation);
+bigBooks.forEach(book => console.log(book.title));
+
+const adventureBooks = books
+  .filter(book => book.genres.includes('adventure'))
+  .map(book => book.title);
+console.log(adventureBooks);
