@@ -156,3 +156,20 @@ console.log(genres);
 
 const [primaryGenre, secondaryGenre] = genres;
 console.log(primaryGenre, secondaryGenre);
+
+// Rest and Spread Operators
+// Spread
+const newGenre = [...genres, "anime", "cartoon"];
+console.log(newGenre);
+
+const updatedBook = {
+  ...book,
+  moviePublicationDate: '2023-06-15',
+  hasMovieAdaptation: true,
+}
+
+console.log(updatedBook);
+
+// Rest Operator
+const [firstGenre, secondGenre, ...others] = newGenre;
+console.log(firstGenre, secondGenre);
