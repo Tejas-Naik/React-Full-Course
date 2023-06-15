@@ -178,4 +178,9 @@ console.log(firstGenre, secondGenre);
 const bookDescription = `The ${title} is written by ${author} in ${publicationDate.split("-")[0]}. `
 console.log(bookDescription);
 
+// Ternary Operator
+const readingTime = book.pages >= 1000 ? "Long Read" : "Short Read";
+const readingTime2 = getBook(1).pages >= 1000 ? "Long Read" : "Short Read";
+console.log(readingTime);
+console.log(readingTime2);
 
