@@ -207,3 +207,14 @@ console.log(book.reviews.librarything.reviewsCount || "No Data Available");
 // To fix this
 
 console.log(book.reviews.librarything.reviewsCount ?? "No Data Available");
+
+// Optional Chainig (?.)
+const getTotalReviewCount = function (book) {
+  const goodreads = book.reviews?.goodreads?.reviewsCount;
+  const librarything = (
+    book.reviews?.librarything?.reviewsCount ?? 0
+  );
+  return goodreads + librarything
+}
+
+console.log(getTotalReviewCount(getBook(3)));
