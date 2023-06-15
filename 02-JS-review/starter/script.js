@@ -173,3 +173,9 @@ console.log(updatedBook);
 // Rest Operator
 const [firstGenre, secondGenre, ...others] = newGenre;
 console.log(firstGenre, secondGenre);
+
+// Template Literals
+const bookDescription = `The ${title} is written by ${author} in ${publicationDate.split("-")[0]}. `
+console.log(bookDescription);
+
+
