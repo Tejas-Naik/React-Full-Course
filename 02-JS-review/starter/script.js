@@ -188,3 +188,22 @@ console.log(readingTime2);
 const getYear = (publicationDate) => publicationDate.split("-")[0];
 const newBookDescription = `The ${title} is written by ${author} in ${getYear(publicationDate)} and has ${hasMovieAdaptation ? "" : "not"} adopted a movie `
 console.log(newBookDescription);
+
+// Short Circuiting || && operators
+console.log(true && "Some value");
+console.log(false && "Some value");
+
+console.log(hasMovieAdaptation && "This book has a movie");
+
+console.log(true || false);
+console.log(false || true);
+
+const spanishTranslation = book.translations.spanish || "Not translated in spanish";
+console.log(spanishTranslation);
+
+// Nullish coersing Operator ??
+console.log(book.reviews.librarything.reviewsCount || "No Data Available");
+// Now we want 0 as result but it returning "No Data" because 0 is falsy value
+// To fix this
+
+console.log(book.reviews.librarything.reviewsCount ?? "No Data Available");
