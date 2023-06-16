@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 
 const pizzaData = [
     {
@@ -48,7 +49,7 @@ const pizzaData = [
 
 function App() {
     return (
-        <div>
+        <div className="container">
             <Header />
             <Menu />
             <Footer />
@@ -57,18 +58,31 @@ function App() {
 }
 
 function Header() {
-    const style = { color: 'red', fontSize: '48px', textTransform: 'uppercase' };
-    return <h1 style={style}>Fast React Pizza Co.</h1>
+    // const style = { color: 'red', fontSize: '48px', textTransform: 'uppercase' };
+    return (
+        <header className="header">
+            <h1>Fast React Pizza Co.</h1>
+        </header>
+    )
 }
 
 function Menu() {
     return (
-        <div>
-            <h1>Our Menu</h1>
-            <Pizza />
-            <Pizza />
-            <Pizza />
-        </div>
+        <main className="menu">
+            <h2>Our Menu</h2>
+            <div className="pizzas">
+                {
+                    pizzaData.map(({ name, ingredients, photoName }) => (
+                        <Pizza
+                            name={name}
+                            ingredients={ingredients}
+                            imageUrl={photoName}
+                            price="10"
+                        />
+                    ))
+                }
+            </div>
+        </main>
     )
 }
 
@@ -82,15 +96,18 @@ function Footer() {
     // else alert("We're closed");
 
     // return React.createElement("footer", null, "We're currently open!")
-    return <footer>{new Date().toLocaleTimeString()} We're currently OPEN</footer>
+    return <footer className="footer">{new Date().toLocaleTimeString()} We're currently OPEN</footer>
 }
 
-function Pizza() {
+function Pizza({ name, imageUrl, ingredients, price }) {
     return (
-        <div>
-            <img src="pizzas/spinaci.jpg" alt="Pizza Spinaci" />
-            <h2>Pizza Spinaci</h2>
-            <p>Tomato, mozarella, spinach, and ricotta cheese</p>
+        <div className="pizza">
+            <img src={imageUrl} alt={name} />
+            <div>
+                <h3>{name}</h3>
+                <p>{ingredients}</p>
+                <span>{price}</span>
+            </div>
         </div>
     )
 }
