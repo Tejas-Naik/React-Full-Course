@@ -221,6 +221,7 @@ const getTotalReviewCount = function (book) {
 console.log(getTotalReviewCount(getBook(3)));
 */
 
+/*
 // Map Method
 const books = getBooks();
 const titles = books.map(book => book.title);
@@ -244,7 +245,7 @@ console.log(totalPages);
 
 // Sorting Arrays
 const arr = [1, 6, 8, 6, 9, 2, 3, 7, 4];
-// sort changes the actual array so to stop that from happening 
+// sort changes the actual array so to stop that from happening
 const sorted = arr.slice().sort((a, b) => a - b);
 console.log(sorted);
 console.log(arr);
@@ -254,7 +255,7 @@ console.log(sortedByPages);
 
 // Working w/ Immutable Arrays
 
-// Adding 
+// Adding
 const newBook = {
   id: 6,
   title: "Harry Potter and the Chamber of Serets",
@@ -275,3 +276,20 @@ console.log(booksAfterDeleting);
 // Updating
 const booksAfterUpdating = books.map(book => book.id === 1 ? { ...book, pages: book.pages + 1000 } : book);
 console.log(booksAfterUpdating);
+*/
+
+// Promises 
+fetch('https://jsonplaceholder.typicode.com/todos')
+  .then(res => res.json())
+  .then(data => console.log(data));
+
+console.log("Tejas");
+
+// Async/Await
+const getTodos = async function () {
+  const res = await fetch('https://jsonplaceholder.typicode.com/todos');
+  const data = await res.json();
+  console.log(data);
+}
+
+getTodos();
