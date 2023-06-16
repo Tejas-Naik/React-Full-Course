@@ -14,10 +14,10 @@ function App() {
   // const [test, setTest] = useState({ name: "Tejas" });
 
   const handlePrevious = () => {
-    if (step > 1) setStep(step - 1);
+    if (step > 1) setStep((s) => s - 1);
   };
   const handleNext = () => {
-    if (step < 3) setStep(step + 1);
+    if (step < 3) setStep((s) => s + 1);
 
     // BAD PRACTICE (NEVER DO THIS)
 
@@ -27,7 +27,7 @@ function App() {
   }
 
   const handleClose = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((isOpen) => !isOpen);
   }
 
   return (
