@@ -116,7 +116,8 @@ function Footer() {
     </footer>
 }
 
-function Pizza({ pizzaObj: { name, price, ingredients, photoName } }) {
+function Pizza({ pizzaObj: { name, price, ingredients, photoName, soldOut } }) {
+    if (soldOut) return null;
     return (
         <li className="pizza">
             <img src={photoName} alt={name} />
