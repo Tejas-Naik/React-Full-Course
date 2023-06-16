@@ -67,48 +67,53 @@ function Header() {
 }
 
 function Menu() {
+    const pizzas = pizzaData;
+    const numPizzas = pizzas.length;
+
     return (
         <main className="menu">
             <h2>Our Menu</h2>
-            <div className="pizzas">
-                {
-                    pizzaData.map(({ name, ingredients, photoName }) => (
-                        <Pizza
-                            name={name}
-                            ingredients={ingredients}
-                            imageUrl={photoName}
-                            price="10"
-                        />
-                    ))
-                }
-            </div>
+            {(numPizzas > 0) && (
+                <ul className="pizzas">
+                    {
+                        pizzas.map((pizza) => (
+                            <Pizza pizzaObj={pizza} key={pizza.name} />
+                        ))
+                    }
+                </ul>
+            )}
+
         </main>
     )
 }
 
 function Footer() {
     const hour = new Date().getHours();
-    const openHour = 12;
+    const openHour = 1;
     const closeHour = 22;
     const isOpen = (hour >= openHour && hour <= closeHour);
-
-    // if (hour >= openHour && hour <= closeHour) alert("We're Open");
-    // else alert("We're closed");
-
     // return React.createElement("footer", null, "We're currently open!")
-    return <footer className="footer">{new Date().toLocaleTimeString()} We're currently OPEN</footer>
+
+    return <footer className="footer">
+        {isOpen && (
+            <div className="order">
+                <p>We're open until {closeHour}:00. Come visit us or order online</p>
+                <button className="btn">Order</button>
+            </div>
+        )}
+    </footer>
 }
 
-function Pizza({ name, imageUrl, ingredients, price }) {
+function Pizza({ pizzaObj: { name, price, ingredients, photoName } }) {
     return (
-        <div className="pizza">
-            <img src={imageUrl} alt={name} />
+        <li className="pizza">
+            <img src={photoName} alt={name} />
             <div>
                 <h3>{name}</h3>
                 <p>{ingredients}</p>
                 <span>{price}</span>
             </div>
-        </div>
+        </li>
     )
 }
 
