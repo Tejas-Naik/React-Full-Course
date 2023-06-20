@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { Children, useState } from "react";
+// import "./index.css";
 
 const messages = [
   "Learn React ⚛️",
@@ -33,7 +34,6 @@ function App() {
   return (
     <>
       <button className="close" onClick={handleClose}>&times;</button>
-      {/* <button className="close" onClick={handleClose} dangerouslySetInnerHTML={{ __html: isOpen ? "&#61;" : "&times;" }}></button> */}
 
       {isOpen &&
         <div className="steps">
@@ -46,16 +46,24 @@ function App() {
           <p className="message">Step {step}: {messages[step - 1]}</p>
 
           <div className="buttons">
-            <button
-              style={{ backgroundColor: '#7950f2', color: '#fff' }}
+            <Button
+              bgColor='#7950f2'
+              textColor='#fff'
               onClick={handlePrevious}
-            >Previous</button>
+            >
+              <span>👈</span>
+              <span>Previous</span>
+            </Button>
 
-            <button
-              style={{ backgroundColor: '#7950f2', color: '#fff' }}
+            <Button
+              bgColor='#7950f2'
+              textColor='#fff'
               onClick={handleNext}
-            >Next
-            </button>
+              emoji=""
+            >
+              <span>Next</span>
+              <span>👉</span>
+            </Button>
 
           </div>
         </div>
@@ -65,3 +73,12 @@ function App() {
 }
 
 export default App;
+
+
+function Button({ textColor, onClick, bgColor, children }) {
+  return <button
+    style={{ backgroundColor: bgColor, color: textColor }}
+    onClick={onClick}>
+    {children}
+  </button>
+}
