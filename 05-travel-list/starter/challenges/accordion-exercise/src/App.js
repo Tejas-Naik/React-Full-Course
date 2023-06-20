@@ -28,18 +28,39 @@ export default function App() {
 }
 
 function Accordion({ data }) {
+  const [curOpen, setIsCurOpen] = useState(null);
+
   return <div className="accordion">
     {
-      data.map(({ text, title }, i) => <AccordionItem key={i} title={title} text={text} num={i} />)
+      data.map(({ text, title }, i) =>
+        <AccordionItem
+          key={i}
+          title={title}
+          num={i}
+          curOpen={curOpen}
+          onOpen={setIsCurOpen}
+        >
+          <div className="content-box">{text}</div>
+        </AccordionItem>)
     }
+    <AccordionItem
+      key={1235}
+      title="React"
+      num={23}
+      curOpen={curOpen}
+      onOpen={setIsCurOpen}
+    >
+      <div className="content-box">Learn react in 2023. thats the best decicsion you can make.</div>
+    </AccordionItem>
   </div>;
 }
 
-function AccordionItem({ num, text, title }) {
-  const [isOpen, setIsOpen] = useState(false);
+function AccordionItem({ num, title, curOpen, onOpen, children }) {
+  // const [isOpen, setIsOpen] = useState(false);
+  const isOpen = num === curOpen;
 
   const handleToggle = function () {
-    setIsOpen(cur => !cur);
+    onOpen(isOpen ? null : num);
   }
 
   return (
@@ -48,7 +69,7 @@ function AccordionItem({ num, text, title }) {
       <p className="text">{title}</p>
       <p className="icon">{isOpen ? '-' : "+"}</p>
 
-      {isOpen && <div className="content-box">{text}</div>}
+      {isOpen && children}
 
     </div>
   )
