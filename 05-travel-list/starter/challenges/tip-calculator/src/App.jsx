@@ -32,7 +32,7 @@ function BillInput({ bill, onSetBill }) {
   console.log(`bill: ${bill}`);
   return (
     <div>
-      <span>How much was the bill? </span>
+      <label>How much was the bill? </label>
       <input type="text" value={bill || 0} onChange={(e) => onSetBill(+e.target.value)} />
     </div>
   )
@@ -43,7 +43,7 @@ function DropdownBox({ percentage, onSetPercentage, children }) {
   return <div>
     {children}
     <select value={percentage} onChange={(e) => onSetPercentage(+e.target.value)}>
-      <option value={0}>It was not good (0%)</option>
+      <option value={0}>Not satisfied (0%)</option>
       <option value={5}>It was OK (5%)</option>
       <option value={10}>It was Good (10%)</option>
       <option value={20}>It was Satisfactory (20%)</option>
@@ -52,13 +52,13 @@ function DropdownBox({ percentage, onSetPercentage, children }) {
 }
 
 function Result({ bill, myPercentage, friendPercentage, onClear }) {
-  const tip = (myPercentage + friendPercentage) * (bill / 100);
-
+  const tip = ((myPercentage + friendPercentage) / 100) * bill;
+  const total = bill + tip;
 
   return (
     <>
-      <h2>`You pay ${bill} (${bill} + ${tip})`</h2>
-      <button onClick={onClear}>Reset</button>
+      <h2>You pay ${total} (${bill} + ${tip})</h2>
+      {bill > 0 && <button onClick={onClear}>Reset</button>}
     </>
-  )
+  );
 }
