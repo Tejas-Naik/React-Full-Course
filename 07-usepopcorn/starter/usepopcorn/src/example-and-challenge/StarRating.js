@@ -28,7 +28,7 @@ export default function StarRating({
     className = "",
     defaultRating = 0,
     messages = [],
-    onSetRating,
+    onSetRating = () => { },
 }
 ) {
     const [rating, setRating] = useState(defaultRating);
@@ -112,3 +112,12 @@ function Star({ full, onRate, onHoverIn, onHoverOut, color, size }) {
 
     )
 }
+
+/*
+    <StarRating maxRating={5} />
+    <StarRating size={25} />
+    <StarRating messages={["Terrible", "Bad", "Okay", "Good", "Amazing"]} />
+    <StarRating color='#0999' className='test' />
+    <StarRating defaultRating={3} />
+
+*/
