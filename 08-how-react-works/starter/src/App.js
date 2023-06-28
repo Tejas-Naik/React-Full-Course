@@ -98,3 +98,8 @@ function DifferentContent() {
     </div>
   );
 }
+
+
+// components, component instances, and elements
+console.log(<DifferentContent />);
+console.log(DifferentContent());
