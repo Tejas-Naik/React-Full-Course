@@ -38,6 +38,7 @@ function Tabbed({ content }) {
         <Tab num={3} activeTab={activeTab} onClick={setActiveTab} />
       </div>
 
+      {/* Diffing : resetting the state of TabContent */}
       {activeTab <= 2 ? (
         <TabContent item={content.at(activeTab)} />
       ) : (
