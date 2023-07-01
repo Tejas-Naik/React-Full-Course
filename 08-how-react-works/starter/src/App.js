@@ -40,7 +40,7 @@ function Tabbed({ content }) {
 
       {/* Diffing : resetting the state of TabContent */}
       {activeTab <= 2 ? (
-        <TabContent item={content.at(activeTab)} />
+        <TabContent item={content.at(activeTab)} key={content.at(activeTab).summary} />
       ) : (
         <DifferentContent />
       )}
@@ -104,3 +104,5 @@ function DifferentContent() {
 // components(UI), component instances(calling component), and elements(react.createElement())
 console.log(<DifferentContent />);      // type : component
 console.log(DifferentContent());        // type : div
+
+console.log("qwerty");
