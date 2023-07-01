@@ -125,3 +125,4 @@ function DifferentContent() {
 // components(UI), component instances(calling component), and elements(react.createElement())
 console.log(<DifferentContent />);      // type : component
 console.log(DifferentContent());        // type : div
+
