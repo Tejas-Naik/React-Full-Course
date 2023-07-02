@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+// const OMDB_API_KEY = "cd325220";
+const OMDB_API_KEY = "f84fc31d";
+
 const tempMovieData = [
   {
     imdbID: "tt1375666",
@@ -51,8 +54,15 @@ const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
 export default function App() {
-  const [movies, setMovies] = useState(tempMovieData);
-  const [watched, setWatched] = useState(tempWatchedData);
+  const [movies, setMovies] = useState([]);
+  const [watched, setWatched] = useState([]);
+
+  fetch(`http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=interstellar`)
+    .then(res => res.json())
+    .then(data => console.log(data.Search));
+
+
+
   return (
     <>
       {/* Fixing PROP Drilling w/Component Composition */}
@@ -229,3 +239,4 @@ function WatchedMovie({ movie }) {
     </li>
   )
 }
+

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-// import './index.css';
-// import App from './App';
-import TextExpander from './example-and-challenge/TextExpander';
+import App from './App';
+import './index.css';
+// import TextExpander from './example-and-challenge/TextExpander';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <TextExpander
+    {/* <TextExpander
       text={"In a distant land, under a sky painted with hues of gold and crimson, a solitary figure stood on the edge of a cliff, gazing into the vast unknown. The wind whispered secrets as it swept through the tall grass, carrying the scent of adventure and untold stories. With a heart full of anticipation, the figure took a leap into the abyss, ready to embrace whatever destiny awaited."}
     />
 
@@ -21,6 +21,7 @@ root.render(
       buttonColor="#ff6622"
     />
 
-    {/* <Test /> */}
+    <Test /> */}
+    <App />
   </React.StrictMode>
 );
