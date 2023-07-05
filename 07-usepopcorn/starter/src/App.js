@@ -92,8 +92,8 @@ export default function App() {
 */
 
   useEffect(function () {
-    async function fetchMovies() {
 
+    async function fetchMovies() {
       try {
         setIsLoading(true);
         setError("");
@@ -319,7 +319,13 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
   useEffect(function () {
     if (!title) return;
     document.title = `MOVIE | ${title}`;
-  }, [title])
+
+    // Cleanup function
+    return function () {
+      document.title = "usePopcorn";
+      console.log(`Clean up effect for movie ${title}`);
+    }
+  }, [title]);
 
   return (
     <div className="details">
