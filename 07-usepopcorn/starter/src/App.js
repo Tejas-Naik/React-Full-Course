@@ -115,6 +115,7 @@ export default function App() {
         setError("");
       } catch (err) {
         if (err.name !== "AbortError") {
+          console.log(err.message);
           setError(err.message);
         }
       } finally {
@@ -128,6 +129,7 @@ export default function App() {
       return;
     }
 
+    handleCloseMovie();
     fetchMovies();
 
     return function () {
@@ -304,6 +306,20 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
   }
 
   useEffect(function () {
+    function callback(e) {
+      if (e.code === "Escape") {
+        onCloseMovie();
+      }
+    }
+
+    document.addEventListener('keydown', callback);
+
+    return function () {
+      document.removeEventListener('keydown', callback);
+    }
+  }, [onCloseMovie])
+
+  useEffect(function () {
     async function getMovieDetails() {
       try {
         setLoading(true);
@@ -334,13 +350,13 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     // Cleanup function
     return function () {
       document.title = "usePopcorn";
-      console.log(`Clean up effect for movie ${title}`);
+      // console.log(`Clean up effect for movie ${title}`);
     }
   }, [title]);
 
   return (
     <div className="details">
-      {loading ? <loader /> :
+      {loading ? <Loader /> :
         <>
           <header>
             <button className="btn-back" onClick={onCloseMovie}>
