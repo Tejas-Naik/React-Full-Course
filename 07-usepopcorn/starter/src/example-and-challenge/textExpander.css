@@ -1,5 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 .App {
-  font-family: sans-serif;
+  font-family: "Poppins", sans-serif;
   text-align: center;
 }
 
@@ -8,4 +9,36 @@
   border: 1px solid #ccc;
   border-radius: 7px;
   background-color: #f7f7f7;
+}
+
+.App {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.App input[type="text"],
+.App select {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+.App select {
+  width: 100%;
+}
+
+.App p {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.App p.loading {
+  color: #888;
 }
