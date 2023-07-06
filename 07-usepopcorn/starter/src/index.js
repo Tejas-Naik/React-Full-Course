@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import App from './App-v2';
 import './index.css';
 // import TextExpander from './example-and-challenge/TextExpander';
 
