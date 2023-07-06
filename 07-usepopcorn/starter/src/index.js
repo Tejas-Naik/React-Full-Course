@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
-import './index.css';
+// import App from './App';
+// import './index.css';
 // import TextExpander from './example-and-challenge/TextExpander';
+
+// Currency Converter Challenge
+import App from "./example-and-challenge/CurrencyConverter";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
