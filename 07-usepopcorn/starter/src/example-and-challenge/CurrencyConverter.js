@@ -1,4 +1,3 @@
-import { isLabelWithInternallyDisabledControl } from '@testing-library/user-event/dist/utils';
 import { useEffect, useState } from 'react';
 import './textExpander.css';
 // `https://api.frankfurter.app/latest?amount=100&from=EUR&to=USD`
