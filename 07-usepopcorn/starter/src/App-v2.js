@@ -234,6 +234,21 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
   // if (imdbRating > 8) return <p>Greatest ever!</p>
   // This will only render (3 hooks) so doesnt work 
 
+  // USESTATE
+  // The initila value of the useState is determined by the statement you give for the first time only
+  // const [isTop, setIsTop] = useState(imdbRating > 8);
+  // This will not be true because until it gets the imdbRating from the API it will be undefined and it only calls it once
+  // console.log(isTop);
+
+  // we can use useEffect for this but thats a lot of work so use derived state instead
+  // useEffect(function () {
+  //   setIsTop(imdbRating > 8)
+  // }, [imdbRating]);
+
+  const isTop = imdbRating > 8;
+  console.log(isTop);
+
+
   const handleAdd = () => {
     const newWatchedMovie = {
       imdbID: selectedId,
