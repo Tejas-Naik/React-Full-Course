@@ -9,11 +9,16 @@ const average = (arr) =>
 
 export default function App() {
   const [movies, setMovies] = useState([]);
-  const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState("")//"tt1632701");
+
+  // const [watched, setWatched] = useState([]);
+  const [watched, setWatched] = useState(function () {
+    const storedValue = localStorage.getItem("watched");
+    return JSON.parse(storedValue);
+  });
 
   const handleSelectMovie = (id) => {
     setSelectedId(selectedId => selectedId === id ? null : id);
@@ -21,9 +26,17 @@ export default function App() {
 
   const handleCloseMovie = () => setSelectedId(null);
 
-  const handleAddWatched = (movie) => setWatched(watched => [...watched, movie]);
+  const handleAddWatched = (movie) => {
+    setWatched(watched => [...watched, movie]);
+
+    // localStorage.setItem("watched", JSON.stringify([...watched, movie]));
+  }
 
   const handleRemoveWatched = (id) => setWatched((watched) => watched.filter(movie => movie.imdbID !== id))
+
+  useEffect(function () {
+    localStorage.setItem("watched", JSON.stringify(watched));
+  }, [watched])
 
   useEffect(function () {
     const controller = new AbortController();
@@ -384,7 +397,7 @@ function WatchedSummary({ watched }) {
         </p>
         <p>
           <span>⏳</span>
-          <span>{avgRuntime} min</span>
+          <span>{avgRuntime.toFixed(2)} min</span>
         </p>
       </div>
     </div>
