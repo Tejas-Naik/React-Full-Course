@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-// import App from './App-v2';
-// import './index.css';
+import App from './App-v2';
+import './index.css';
 // import TextExpander from './example-and-challenge/TextExpander';
 
 // Currency Converter Challenge
 // import App from "./example-and-challenge/CurrencyConverter";
 
 // GeoLocation Challenge
-import App from "./example-and-challenge/geolocation/App"
+// import App from "./example-and-challenge/geolocation/App"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
