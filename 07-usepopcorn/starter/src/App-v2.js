@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import StarRating from "./StarRating";
 
 const OMDB_API_KEY = "cd325220";
@@ -151,10 +151,29 @@ function Logo() {
 }
 
 function Search({ query, setQuery }) {
+  // DO NOT SELECT ELEMENTS LIKE THIS
+  // useEffect(function () {
+  //   const el = document.querySelector('.search');
+  //   console.log(el);
+  //   el.focus();
+  // }, []);
+
+  // USING REF TO SELECT DOM
+  const inputEl = useRef(null);
+
   useEffect(function () {
-    const el = document.querySelector('.search');
-    el.focus();
-  }, []);
+    function callback(e) {
+      if (document.activeElement === inputEl.current) return;
+
+      if (e.code === "Enter") {
+        inputEl.current.focus();
+        setQuery("");
+      }
+    }
+    document.addEventListener('keydown', callback);
+
+    return () => document.removeEventListener('keydown', callback);
+  }, [setQuery]);
 
   return (
     <input
@@ -163,6 +182,7 @@ function Search({ query, setQuery }) {
       placeholder="Search movies..."
       value={query}
       onChange={(e) => setQuery(e.target.value)}
+      ref={inputEl}
     />
   )
 }
