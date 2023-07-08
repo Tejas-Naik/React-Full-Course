@@ -1,4 +1,4 @@
-import DateCounter from "./DateCounter-v2";
+import DateCounter from "./DateCounter";
 
 function App() {
   return (
