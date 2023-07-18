@@ -1,0 +1,14 @@
+.nav {
+  background-color: orangered;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* use global selectors when the classnames are coming from other sources */
+.nav :global(.active) {
+  background-color: greenyellow;
+}
