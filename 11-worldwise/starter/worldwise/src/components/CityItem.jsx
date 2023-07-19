@@ -21,10 +21,11 @@ function CityItem({ city }) {
         return <img src={flagImageUrl} alt="flag" />;
     };
 
-    const { id, emoji, date, cityName } = city;
+    const { id, emoji, date, cityName, position } = city;
+    console.log(position);
     return (
         <li>
-            <Link to={`${id}`} className={styles.cityItem}>
+            <Link to={`${id}?lat=${position.lat}&lng=${position.lng}`} className={styles.cityItem}>
                 <span className={styles.emoji}>{flagemojiToPNG(emoji)}</span>
                 <h3 className={styles.name}>{cityName}</h3>
                 <time className={styles.date}>{formatDate(date)}</time>
