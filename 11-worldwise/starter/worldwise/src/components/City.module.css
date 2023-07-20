@@ -11,6 +11,10 @@
   gap: 2rem;
 }
 
+.city::-webkit-scrollbar {
+  width: 0;
+}
+
 .row {
   display: flex;
   flex-direction: column;
@@ -32,6 +36,8 @@
 }
 
 .city h3 span {
+  display: flex;
+  align-items: center;
   font-size: 3.2rem;
   line-height: 1;
 }
