@@ -35,66 +35,6 @@
         "lng": 13.376933665713324
       },
       "id": 98443197
-    },
-    {
-      "cityName": "Belvis de la Jara",
-      "date": "2023-07-23T13:27:12.262Z",
-      "emoji": "🇪🇸",
-      "country": "Spain",
-      "notes": "lets hope to see it soon",
-      "position": {
-        "lat": "39.774769485295465",
-        "lng": "-4.94384765625"
-      },
-      "id": 98443198
-    },
-    {
-      "cityName": "Bensafrim e Barao de Sao Joao",
-      "date": "2023-07-23T13:28:48.116Z",
-      "emoji": "🇵🇹",
-      "country": "Portugal",
-      "notes": "near to faro",
-      "position": {
-        "lat": "37.142803443716836",
-        "lng": "-8.723144531250002"
-      },
-      "id": 98443199
-    },
-    {
-      "cityName": "Altsynkhuta",
-      "date": "2023-07-23T13:30:11.157Z",
-      "emoji": "🇷🇺",
-      "country": "Russian Federation (the)",
-      "notes": "IDK why",
-      "position": {
-        "lat": "46.93526088057719",
-        "lng": "45"
-      },
-      "id": 98443200
-    },
-    {
-      "cityName": "Mongonmorĭt",
-      "date": "2023-07-23T13:30:47.565Z",
-      "emoji": "🇲🇳",
-      "country": "Mongolia",
-      "notes": "which country??",
-      "position": {
-        "lat": "48.25394114463434",
-        "lng": "108.54492187500001"
-      },
-      "id": 98443201
-    },
-    {
-      "cityName": "Heping",
-      "date": "2023-07-23T13:31:31.945Z",
-      "emoji": "🇨🇳",
-      "country": "China",
-      "notes": "China",
-      "position": {
-        "lat": "25.859223554761407",
-        "lng": "106.54541015625"
-      },
-      "id": 98443202
     }
   ]
 }
