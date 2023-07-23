@@ -1,38 +1,55 @@
-import { useEffect, useState } from "react";
-import { MapContainer, Marker, Popup, TileLayer, useMap, useMapEvents } from "react-leaflet";
+import {
+    MapContainer,
+    Marker,
+    Popup,
+    TileLayer,
+    useMap,
+    useMapEvents,
+} from "react-leaflet";
 import { useNavigate, useSearchParams } from "react-router-dom";
+
+import { useEffect, useState } from "react";
 import { useCities } from "../context/CitiesContext";
+import { useGeolocation } from "../hooks/useGeolocation";
+import { useUrlPosition } from "../hooks/useUrlPosition";
+import Button from "./Button";
 import styles from "./Map.module.css";
 
-const flagemojiToPNG = (flag) => {
-    const codePoints = Array.from(flag, (char) => char.codePointAt(0));
-    const countryCode = codePoints
-        .map((code) => String.fromCharCode(code - 127397).toLowerCase())
-        .join('');
-
-    const flagImageUrl = `https://flagcdn.com/24x18/${countryCode}.png`;
-
-    return <img src={flagImageUrl} alt="flag" />;
-};
-
 function Map() {
-    const navigate = useNavigate();
     const { cities } = useCities();
+    const [mapPosition, setMapPosition] = useState([40, 0]);
+    const {
+        isLoading: isLoadingPosition,
+        position: geolocationPosition,
+        getPosition,
+    } = useGeolocation();
+    const [mapLat, mapLng] = useUrlPosition();
 
-    const [mapPosition, setMapPosition] = useState([40, 0])
-    const [searchParams] = useSearchParams();
-    const mapLat = searchParams.get("lat");
-    const mapLng = searchParams.get("lng");
+    useEffect(
+        function () {
+            if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
+        },
+        [mapLat, mapLng]
+    );
 
-    useEffect(function () {
-        if (mapLat && mapLng) setMapPosition([mapLat, mapLng])
-    }, [mapLat, mapLng])
+    useEffect(
+        function () {
+            if (geolocationPosition)
+                setMapPosition([geolocationPosition.lat, geolocationPosition.lng]);
+        },
+        [geolocationPosition]
+    );
 
     return (
-        <div className={styles.mapContainer} onClick={() => navigate("form")}>
+        <div className={styles.mapContainer}>
+            {!geolocationPosition && (
+                <Button type="position" onClick={getPosition}>
+                    {isLoadingPosition ? "Loading..." : "Use your position"}
+                </Button>
+            )}
+
             <MapContainer
                 center={mapPosition}
-                // center={[mapLat, mapLng]}
                 zoom={6}
                 scrollWheelZoom={true}
                 className={styles.map}
@@ -41,10 +58,13 @@ function Map() {
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
                 />
-                {cities.map(city => (
-                    <Marker position={city.position} key={city.id}>
+                {cities.map((city) => (
+                    <Marker
+                        position={[city.position.lat, city.position.lng]}
+                        key={city.id}
+                    >
                         <Popup>
-                            <span>{city.emoji ? flagemojiToPNG(city.emoji) : ""}</span><span>{city.cityName}</span>
+                            <span>{city.emoji}</span> <span>{city.cityName}</span>
                         </Popup>
                     </Marker>
                 ))}
@@ -53,7 +73,7 @@ function Map() {
                 <DetectClick />
             </MapContainer>
         </div>
-    )
+    );
 }
 
 function ChangeCenter({ position }) {
@@ -66,10 +86,8 @@ function DetectClick() {
     const navigate = useNavigate();
 
     useMapEvents({
-        click: (e) => navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`)
-
-    })
-    return null;
+        click: (e) => navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`),
+    });
 }
 
 export default Map;
