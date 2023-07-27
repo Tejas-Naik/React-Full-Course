@@ -8,7 +8,7 @@ const initialState = {
 }
 
 function reducer(state, action) {
-    switch (action.types) {
+    switch (action.type) {
         case "login":
             return {
                 ...state,
