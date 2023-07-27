@@ -1,8 +1,6 @@
 import React from 'react';
-import { useAppContext } from '../context/AppContext';
 
-function NextButton() {
-    const { dispatch, answer, numQuestions, index } = useAppContext();
+function NextButton({ dispatch, answer, numQuestions, index }) {
     if (answer === null) return null;
 
     if (index < numQuestions - 1) return (

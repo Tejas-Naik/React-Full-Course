@@ -1,8 +1,6 @@
 import React from 'react';
-import { useAppContext } from '../context/AppContext';
 
-function Options({ question }) {
-    const { dispatch, answer } = useAppContext();
+function Options({ question, dispatch, answer }) {
     const hasAnswered = answer !== null;
 
     return (

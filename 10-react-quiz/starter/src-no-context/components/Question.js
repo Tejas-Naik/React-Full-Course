@@ -1,10 +1,7 @@
 import React from 'react';
-import { useAppContext } from '../context/AppContext';
 import Options from './Options';
 
-function Question() {
-    const { questions, dispatch, answer, index } = useAppContext();
-    const question = questions.at(index)
+function Question({ question, dispatch, answer }) {
     return (
         <div>
             <h4>{question.question}</h4>

@@ -1,8 +1,6 @@
 import React from 'react';
-import { useAppContext } from '../context/AppContext';
 
-function FinishedScreen() {
-    const { points, maxPossiblePoints, highscore } = useAppContext();
+function FinishedScreen({ points, maxPossiblePoints, highscore }) {
     const percentage = (points / maxPossiblePoints) * 100;
 
     let emoji;

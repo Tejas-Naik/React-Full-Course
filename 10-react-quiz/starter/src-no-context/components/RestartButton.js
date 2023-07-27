@@ -1,8 +1,6 @@
-import React from 'react';
-import { useAppContext } from '../context/AppContext';
+import React from 'react'
 
-function RestartButton() {
-    const { dispatch } = useAppContext();
+function RestartButton({ dispatch }) {
     return (
         <button
             className='btn btn-ui'
