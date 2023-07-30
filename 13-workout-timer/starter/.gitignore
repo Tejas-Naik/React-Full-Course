@@ -1,0 +1,29 @@
+# Node.js / npm
+node_modules/
+
+# Build
+build/
+dist/
+
+# Dependency lock files
+yarn.lock
+package-lock.json
+
+# Environment variables
+.env
+
+# Editor/IDE specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# macOS specific files
+.DS_Store
+
+# Windows thumbnail cache files
+Thumbs.db
+
+# Log files
+*.log
+
