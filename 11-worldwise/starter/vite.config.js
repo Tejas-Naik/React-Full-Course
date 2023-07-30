@@ -7,5 +7,5 @@ export default defineConfig({
   server: {
     port: 3000
   }
-
+  // rule : exhaustive-deps (for dependency array)
 })
