@@ -1,17 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import { Provider } from "react-redux";
 import App from './App';
+import './index.css';
 
 import store from "./store";
-import { deposit } from './features/accounts/accountSlice';
-
-store.dispatch(deposit(100));
-console.log(store.getState());
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
