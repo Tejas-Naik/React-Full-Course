@@ -31,6 +31,12 @@ function Calculator({ workouts, allowSound }) {
     playSound();
   }, [duration, allowSound]);
 
+  useEffect(function () {
+    // so as long as we dont mention sets and duration in the dep array it will get access to those vars from the closure(timeof the vars creation)
+    console.log(sets, duration);
+    document.title = `Your ${number}-exercise workout`;
+  }, [number])
+
   // const duration = (number * sets * speed) / 60 + (sets - 1) * durationBreak;
   const mins = Math.floor(duration);
   const seconds = (duration - mins) * 60;
